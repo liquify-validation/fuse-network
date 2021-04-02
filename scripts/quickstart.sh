@@ -7,15 +7,15 @@ OLDIFS=$IFS
 QUICKSTART_VERSION="1.0.0"
 
 #set this to true to allow for hardcoded versioning for debugging
-OVERRIDE_VERSION_FILE=false
+OVERRIDE_VERSION_FILE=true
 VERSION_FILE="https://raw.githubusercontent.com/fuseio/fuse-network/master/Version"
 DOCKER_IMAGE_ORACLE_VERSION="3.0.0"
 DOCKER_IMAGE_FUSE_APP_VERSION="1.0.0"
-DOCKER_IMAGE_FUSE_PARITY_VERSION="1.0.0"
+DOCKER_IMAGE_FUSE_PARITY_VERSION="3.2.2"
 DOCKER_IMAGE_NET_STATS_VERSION="1.0.0"
 
 ENV_FILE=".env"
-DOCKER_IMAGE_PARITY="fusenet/node"
+DOCKER_IMAGE_PARITY="andypohl1/node"
 DOCKER_CONTAINER_PARITY="fusenet"
 DOCKER_IMAGE_APP="fusenet/validator-app"
 DOCKER_CONTAINER_APP="fuseapp"
@@ -566,7 +566,7 @@ function run {
         --restart=always \
         $DOCKER_IMAGE_PARITY \
         --role node \
-        --parity-args --no-warp --node-key $NODE_KEY --jsonrpc-threads $NUM_RPC_THREADS --jsonrpc-server-threads $NUM_HTTP_THREADS
+        --parity-args --no-warp --node-key $NODE_KEY
       ;;
 
     "validator")
